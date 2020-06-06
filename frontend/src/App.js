@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {authUser, updateUser} from "./store/actions/auth";
 import Main from './pages/Main';
 import Education from './components/Education';
-import Parent from "./components/Parent";
 import Profile from "./components/Profile";
 import AuthPage from "./pages/Auth";
 
@@ -27,7 +26,6 @@ const App = (props) => {
                 return (<Education onAuth={authUser} signUp errors={errors} {...props}/>)
             }
             }/>
-            <Route path='/parent' render={props => <Parent onAuth={authUser} error={errors} {...props}/>}/>
         </Fragment>
     )
 };
