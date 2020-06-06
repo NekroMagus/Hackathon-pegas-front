@@ -1,0 +1,40 @@
+.pupil-path {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  width: 700px;
+
+  &__item {
+    background-size: cover;
+    width: 130px;
+    cursor: pointer;
+    height: 130px;
+    &.rocket {
+      background: url("/static/pupil/rocket.jpg") no-repeat center;
+      &.fill {
+        background: url("/static/pupil/rocket-fill.png") no-repeat center;
+      }
+    }
+
+    &.media {
+      background: url("/static/pupil/media.jpg") no-repeat center;
+      &.fill {
+        background: url("/static/pupil/media-fill.png") no-repeat center;
+      }
+    }
+
+    &.browser {
+      background: url("/static/pupil/browser.jpg") no-repeat center;
+      &.fill {
+        background: url("/static/pupil/browser-fill.png") no-repeat center;
+      }
+    }
+
+    &.layout {
+      background: url("/static/pupil/layout.jpg") no-repeat center;
+      &.fill {
+
+      }
+    }
+  }
+}

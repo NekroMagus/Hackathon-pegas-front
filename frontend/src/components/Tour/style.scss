@@ -1,0 +1,58 @@
+.Tour {
+  &__top-square {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    background: #FF5252;
+    padding-left:15px;
+    margin-top: 10%;
+    padding-top: 10%;
+    padding-bottom: 0;
+  }
+  &__bottom-square{
+    background-color: white;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    width: 30%;
+    padding-left:15px;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+  &__text {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+  }
+  &__price {
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 43px;
+    color: #000000;
+  }
+  &__days {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  &__left {
+    margin: 10px 10px 0 10px;
+  }
+  &__right {
+    margin: 45px 20px 0 10px;
+
+  }
+  &__href {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #36A560;
+  }
+  &__href:hover {
+    color: #36A560;
+  }
+}
