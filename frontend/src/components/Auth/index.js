@@ -44,7 +44,6 @@ export default class Auth extends React.Component {
         ev.preventDefault();
         const {firstName, lastName, confirmPass, pass, email} = this.state;
         const isValid = this.state.isSignIn ? email && pass : email && firstName && lastName && pass && confirmPass === pass;
-        console.log(isValid)
         if (isValid) {
             const path = this.state.isSignIn ? 'auth' : 'auth/registration';
             const data = this.state.isSignIn ? {

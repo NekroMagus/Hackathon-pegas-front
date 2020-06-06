@@ -20,15 +20,14 @@
   }
 
   &__item {
-    width: 154px;
-    height: 19px;
-    font-size: 16px;
     font-weight: 900;
+    font-size: 16px;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
     color: #1b1b25;
+    cursor: pointer;
 
     &:hover {
       opacity: 1;

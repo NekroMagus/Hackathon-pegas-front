@@ -21,7 +21,7 @@
     top: 0;
     right: 0;
     width: 227px;
-    height: 1258px;
+    height: 300px;
     border-radius: 6px;
     margin-top: 25px;
     background-color: #f8f8fc;
@@ -46,6 +46,24 @@
       line-height: normal;
       letter-spacing: normal;
       color: #2dbecd;
+    }
+
+    &-counter {
+      margin-top: 40px;
+      color: #2DBECD;
+      font-weight: 900;
+      font-size: 64px;
+      line-height: 77px;
+      text-align: center;
+
+      &-text {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #000000;
+      }
     }
 
     &-info {
