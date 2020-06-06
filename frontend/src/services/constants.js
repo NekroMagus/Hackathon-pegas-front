@@ -1,1 +1,1 @@
-export const ROOT_API = 'http://89.223.88.252:9090/';
+export const ROOT_API = 'http://82.148.19.115:5555/api/';

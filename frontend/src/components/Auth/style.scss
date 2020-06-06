@@ -10,11 +10,10 @@
   background-color: #ffffff;
 
   &__forgot {
-    width: 166px;
-    height: 20px;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: normal;
+    margin-bottom: 75px;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.25;
@@ -76,11 +75,11 @@
     &-list {
       display: flex;
       justify-content: space-between;
-      width: 120px;
+      width: 90px;
 
       img {
-        width: 28px;
-        height: 28px;
+        width: 40px;
+        height: 40px;
       }
     }
   }

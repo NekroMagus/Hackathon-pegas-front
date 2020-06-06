@@ -3,7 +3,6 @@ import './style.scss';
 import {Input} from '../FormControls/Input';
 import {validationText} from '../../services/validation'
 import Button from "../FormControls/Button";
-import {FilterCheckbox} from "../FormControls/CheckBox/FilterCheckbox";
 
 
 export default class Auth extends React.Component {
@@ -43,19 +42,27 @@ export default class Auth extends React.Component {
 
     onSubmit = (ev) => {
         ev.preventDefault();
-        const data = {
-            type: this.state.type,
-            email: this.state.email,
-            password: this.state.pass,
-        };
-        this.props
-            .onAuth("auth/registration", data)
-            .then((data) => {
-                this.props.history.push("/pupil");
-            })
-            .catch(() => {
-                return;
-            });
+        const {firstName, lastName, confirmPass, pass, email} = this.state;
+        const isValid = this.state.isSignIn ? email && pass : email && firstName && lastName && pass && confirmPass === pass;
+        console.log(isValid)
+        if (isValid) {
+            const path = this.state.isSignIn ? 'auth' : 'auth/registration';
+            const data = this.state.isSignIn ? {
+                email: this.state.email,
+                password: this.state.pass,
+            } : {
+                email: this.state.email,
+                password: this.state.pass, firstName: this.state.firstName, lastName: this.state.lastName
+            };
+            this.props
+                .onAuth(path, data)
+                .then((data) => {
+                    this.props.history.push("/profile");
+                })
+                .catch(() => {
+                    return;
+                });
+        }
 
     };
 
@@ -87,12 +94,12 @@ export default class Auth extends React.Component {
                 <div className="auth__forgot">Забыли пароль</div>
             </div>
             <div className="df jcsb">
-                <FilterCheckbox onCheckChange={() => this.checkChange} name='remember' label='Запомнить меня'/>
-                <div className='auth__social'>
+                {/*<FilterCheckbox onCheckChange={() => this.checkChange} name='remember' label='Запомнить меня'/>*/}
+                <div className='auth__social to-right'>
                     <div className="auth__social-title">Авторизоваться через соц. сеть</div>
                     <div className="auth__social-list">
-                        <img src="static/vk.png" alt=""/>
-                        <img src="static/fb.png" alt=""/>
+                        <img src="static/auth/vkicon.png" alt=""/>
+                        <img src="static/auth/FBicon.png" alt=""/>
                     </div>
                 </div>
             </div>
@@ -112,16 +119,17 @@ export default class Auth extends React.Component {
             <div className="df jcsb">
                 <Input style={{width: '235px', marginBottom: '20px'}} label='Пароль*' name='pass' type='password'
                        onChange={this.onInputChange} value={this.state.pass}/>
-                <Input style={{width: '235px', marginBottom: '20px'}} label='Подтвердите пароль*' name='confirmPass' type='password'
+                <Input style={{width: '235px', marginBottom: '20px'}} label='Подтвердите пароль*' name='confirmPass'
+                       type='password'
                        onChange={this.onInputChange} value={this.state.confirmPass}/>
             </div>
             <div className="df jcsb">
-                <FilterCheckbox onCheckChange={() => this.checkChange} name='remember' label='Я согласен с условиями конфиденциальности'/>
-                <div className='auth__social'>
+                {/*<FilterCheckbox onCheckChange={() => this.checkChange} name='remember' label='Я согласен с условиями конфиденциальности'/>*/}
+                <div className='auth__social to-right'>
                     <div className="auth__social-title">Авторизоваться через соц. сеть</div>
                     <div className="auth__social-list">
-                        <img src="static/vk.png" alt=""/>
-                        <img src="static/fb.png" alt=""/>
+                        <img src="static/auth/vkicon.png" alt=""/>
+                        <img src="static/auth/FBicon.png" alt=""/>
                     </div>
                 </div>
             </div>
@@ -134,7 +142,8 @@ export default class Auth extends React.Component {
                     ? signIn
                     : signUp}
                 <div style={this.state.isSignIn ? {} : {justifyContent: 'flex-end'}} className='auth__bottom'>
-                    <Button style={{justifySelf: 'right'}} type='submit' title={confirmButtonText}/>
+                    <Button classes='to-right mt-20' style={{justifySelf: 'right'}} type='submit'
+                            title={confirmButtonText}/>
                 </div>
             </form>
         </div>
