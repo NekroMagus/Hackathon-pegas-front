@@ -3,9 +3,10 @@ import {Route, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {authUser, updateUser} from "./store/actions/auth";
 import Main from './pages/Main';
-import Education from './components/Education';
 import Profile from "./components/Profile";
 import AuthPage from "./pages/Auth";
+import Project from "./components/Project";
+import {User} from "./components/User";
 
 const App = (props) => {
     const {authUser, errors, removeError, currentUser, updateUser} = props;
@@ -22,10 +23,13 @@ const App = (props) => {
                 return (<Profile onAuth={authUser} errors={errors} {...props}/>)
             }
             }/>
-            <Route path='/education/:id' render={props => {
-                return (<Education onAuth={authUser} signUp errors={errors} {...props}/>)
+            <Route path='/user' render={props => {
+                return (<User onAuth={authUser} signUp errors={errors} {...props}/>)
             }
             }/>
+            <Route path='/project' render={props => {
+                return (<Project onAuth={authUser} error={errors} {...props}/>)
+            }}/>
         </Fragment>
     )
 };

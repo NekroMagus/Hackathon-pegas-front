@@ -48,7 +48,7 @@ class Profile extends React.Component {
     componentDidMount() {
         apiCall("get", `${ROOT_API}profile`).then(data =>
             Object.entries(data).forEach(([key, value]) => {
-            console.log(key, value)
+                console.log(key, value)
                 if (this.state.hasOwnProperty(key) && value) {
                     this.setState({
                         [key]: value
@@ -59,7 +59,9 @@ class Profile extends React.Component {
     }
 
     onSubmit = () => {
-        apiCall('PUT', `${ROOT_API}profile`, this.state).then(data => console.log(data))
+        apiCall('PUT', `${ROOT_API}profile`, this.state).then(() => {
+            this.props.history.push("/user");
+        })
     }
 
     onInputChange = ({target}) => {
@@ -93,10 +95,17 @@ class Profile extends React.Component {
     }
 
     num2str(n, text_forms) {
-        n = Math.abs(n) % 100; var n1 = n % 10;
-        if (n > 10 && n < 20) { return text_forms[2]; }
-        if (n1 > 1 && n1 < 5) { return text_forms[1]; }
-        if (n1 === 1) { return text_forms[0]; }
+        n = Math.abs(n) % 100;
+        var n1 = n % 10;
+        if (n > 10 && n < 20) {
+            return text_forms[2];
+        }
+        if (n1 > 1 && n1 < 5) {
+            return text_forms[1];
+        }
+        if (n1 === 1) {
+            return text_forms[0];
+        }
         return text_forms[2];
     }
 
@@ -238,22 +247,27 @@ class Profile extends React.Component {
                                     style={{width: '100%'}}
                                     label='Реализованные проекты на в рамках платформы «Лидеры Алтая»'
                                     placeholder='Расскажите в каких проектов вы участвовали ренее и каких результатов удалось достичь'
-                                    grey onChange={this.onProjectsChange} value={this.state.projectDescription} multiline/>
+                                    grey onChange={this.onProjectsChange} value={this.state.projectDescription}
+                                    multiline/>
                                 <div className='df jcfe'>
                                     <Button style={{width: '246px'}} size='big'>Создать проект</Button>
                                 </div>
                                 <div className="profile__subtitle">Адрес</div>
-                                <GroupSelect />
+                                <GroupSelect/>
                                 <div className='df jcfe'>
-                                    <Button onClick={this.onSubmit} style={{width: '246px'}} size='big'>Сохранить</Button>
+                                    <Button onClick={this.onSubmit} style={{width: '246px'}}
+                                            size='big'>Сохранить</Button>
                                 </div>
                             </div>
                             <div className="profile__sidebar">
-                                <div className="profile__sidebar-avatar" />
+                                <div className="profile__sidebar-avatar"/>
                                 <div className="profile__sidebar-name">{this.state.rating}</div>
-                                <div className="profile__sidebar-info">отсталось набрать 100 баллов до статуса «Лидер мнений»</div>
+                                <div className="profile__sidebar-info">отсталось набрать 100 баллов до статуса «Лидер
+                                    мнений»
+                                </div>
                                 <div className="profile__sidebar-counter">{this.state.points}</div>
-                                <div className="profile__sidebar-counter-text">{`${this.num2str(this.state.points, cases)} вы заработали`}</div>
+                                <div
+                                    className="profile__sidebar-counter-text">{`${this.num2str(this.state.points, cases)} вы заработали`}</div>
                             </div>
                         </div>
                     </Theme>
